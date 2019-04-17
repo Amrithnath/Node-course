@@ -7,4 +7,5 @@ console.log(add(1,3))
 const msg=getNotes()
 console.log(msg)
 
-console.log(validator.isEmail('example.com'))
+console.log(validator.isURL('https://www.google.com'))
+console.log(validator.isEmail('example@gmail.com'))
