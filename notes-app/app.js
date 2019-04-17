@@ -1,2 +1,2 @@
-const name=require("./utils")
-console.log(name)
+const add=require("./utils")
+console.log(add(1,3))
