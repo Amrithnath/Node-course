@@ -1,4 +1,4 @@
 const getNotes=function(){
-    console.log("Your notes...")
+    return "Your notes..."
 }
 module.exports = getNotes
