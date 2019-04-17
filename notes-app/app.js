@@ -1,4 +1,2 @@
-require("./utils")
-const name ="Amrith"
-
+const name=require("./utils")
 console.log(name)
