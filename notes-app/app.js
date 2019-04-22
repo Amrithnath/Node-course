@@ -13,15 +13,50 @@ console.log(validator.isURL('https://www.google.com'))
 console.log(validator.isEmail('example@gmail.com'))
 console.log(chalk.dim.inverse.blue.bgWhiteBright('Error'))
 
+//customize yargs version
+yargs.version('1.1.0')
+// const commands = JSON.stringify(yargs.argv)
+//Create add command
+yargs.command({
+    command:"add",
+    describe:"Add new note",
+    builder:{
+        title:{
+            describe:"Note title",
+            demandOption:true,
+            type:'string'
+        }
+    },
+    handler:function(argv){
+        console.log(chalk.blue("adding a new note",argv.title))
+    }
+})
+// create remove command
+yargs.command({
+    command:'remove',
+    describe:"Removes note",
+    handler:function(){
+        console.log(chalk.red("removing a note"))
+    }
+})
+//create read command
+yargs.command({
+    command:'read',
+    describe:'Reads a note',
+    handler:function () {
+        console.log(chalk.green("reading the note"))
+    }
+})
+//create list command
+yargs.command({
+    command:'list',
+    describe:'lists all notes',
+    handler: function(){
+        console.log(chalk.yellow("listing all notes"))
+    }
+})
 
-const command = process.argv
+//add, remove,read, list
 
-console.log(chalk.yellow(command))
 console.log(chalk.green(JSON.stringify(yargs.argv)))
 
-if(command==="add"){
-    console.log(chalk.blue("adding note..."))
-}
-else if(command === "remove"){
-    console.log(chalk.red("removing note..."))
-}
