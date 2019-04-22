@@ -33,4 +33,4 @@ fs.writeFileSync('1-json.json',wrJson)
 //1 Load and parse json
 //2 change age and name property
 //3 stringify the changed object and overwrite the original data
-//4 test
+//4 test by viewing json
