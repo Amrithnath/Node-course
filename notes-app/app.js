@@ -10,4 +10,5 @@ console.log(msg)
 
 console.log(validator.isURL('https://www.google.com'))
 console.log(validator.isEmail('example@gmail.com'))
-console.log(chalk.dim.inverse.green.bgWhiteBright('Success'))
+console.log(chalk.dim.inverse.blue.bgWhiteBright('Error'))
+console.log(chalk.yellow(process.argv[2]))
