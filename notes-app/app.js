@@ -25,10 +25,16 @@ yargs.command({
             describe:"Note title",
             demandOption:true,
             type:'string'
+        },
+        body:{
+            describe:"Note body",
+            demandOption:true,
+            type:'string'
         }
     },
     handler:function(argv){
-        console.log(chalk.blue("adding a new note",argv.title))
+        console.log(chalk.blue("Title:",argv.title))
+        console.log(chalk.blue.inverse("Body:",argv.body))
     }
 })
 // create remove command
@@ -57,6 +63,6 @@ yargs.command({
 })
 
 //add, remove,read, list
-
-console.log(chalk.green(JSON.stringify(yargs.argv)))
+yargs.parse()
+// console.log(chalk.green(JSON.stringify(yargs.argv)))
 
