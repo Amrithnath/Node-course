@@ -1,17 +1,17 @@
 var validator=require('validator')
 
 const add=require("./utils")
-const getNotes=require("./notes")
+const notes=require("./notes")
 const chalk=require('chalk')
 const yargs=require('yargs')
 
-console.log(add(1,3))
-const msg=getNotes()
-console.log(msg)
+// console.log(add(1,3))
+// const msg=getNotes()
+// console.log(msg)
 
-console.log(validator.isURL('https://www.google.com'))
-console.log(validator.isEmail('example@gmail.com'))
-console.log(chalk.dim.inverse.blue.bgWhiteBright('Error'))
+// console.log(validator.isURL('https://www.google.com'))
+// console.log(validator.isEmail('example@gmail.com'))
+// console.log(chalk.dim.inverse.blue.bgWhiteBright('Error'))
 
 //customize yargs version
 yargs.version('1.1.0')
@@ -33,8 +33,7 @@ yargs.command({
         }
     },
     handler:function(argv){
-        console.log(chalk.blue("Title:",argv.title))
-        console.log(chalk.blue.inverse("Body:",argv.body))
+        notes.addNote(argv.title,argv.body)    
     }
 })
 // create remove command
