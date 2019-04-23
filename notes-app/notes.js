@@ -40,7 +40,7 @@ const removeNote=(title)=>{
 const listNotes=()=>{
     const notes=loadNotes()
     console.log(chalk.blue.inverse("Your notes:\n"))
-    notes.forEach(Note=>console.log("\n"+chalk.bold.yellow.inverse(Note.title)+"\n") 
+    notes.forEach(Note=>console.log(chalk.bold.yellow(Note.title))) 
 }
 module.exports = {
     getNotes:getNotes,
