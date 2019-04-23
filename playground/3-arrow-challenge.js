@@ -17,11 +17,10 @@ const tasks = {
         completed: false
     }],
     getTasksToDo(){
-        this.tasks.forEach((task)=>{
-            if(task.completed===false){
-                console.log(task.text)
-            }
+        const tasksToDo=this.tasks.filter((task)=>{
+            return task.completed===false
         })
+        return tasksToDo
     }
 }
 
