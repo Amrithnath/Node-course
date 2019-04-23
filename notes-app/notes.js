@@ -36,7 +36,12 @@ const saveNotes=function(notes){
     dataJSON=JSON.stringify(notes)
     fs.writeFileSync('notes.json',dataJSON)
 }
+
+const removeNote=function(title){
+    console.log(title+" will be removed")
+}
 module.exports = {
     getNotes:getNotes,
-    addNote:addNote
+    addNote:addNote,
+    removeNote:removeNote
 }

@@ -40,8 +40,15 @@ yargs.command({
 yargs.command({
     command:'remove',
     describe:"Removes note",
-    handler:function(){
-        console.log(chalk.red("removing a note"))
+    builder:{
+        title:{
+            describe:"Note title to be removed",
+            demandOption:true,
+            type:'string'
+        }
+    },
+    handler:function(argv){
+        notes.removeNote(argv.title)
     }
 })
 //create read command
