@@ -38,19 +38,29 @@ const saveNotes=function(notes){
 }
 
 const removeNote=function(title){
-    console.log(title+" will be removed")
+    const notes=loadNotes();
+    newNote=[]
+    const newNotes=notes.filter(function(Note){
+        if (Note.title===title){
+           x=5
+        }
+        else{
+            newNote.push(Note)
+        }
+    })
+    saveNotes(newNote)
+    console.log("Removed"+title)
+    console.log(newNote)
+
 }
 module.exports = {
     getNotes:getNotes,
     addNote:addNote,
     removeNote:removeNote
 }
-
 /*
-Challenge
-
--Set remove command to take a title as an argument
--create and export remove note function in notes.js
--call remove note in remove command handler
--log to console the name of the note to be removed
+Challenge:wire up remove notes
+-Load existing notes
+-use array filter to filter out note with your title
+-save the newly created array
 */
