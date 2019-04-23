@@ -82,12 +82,5 @@ yargs.parse()
 
 /*
 
-Goal: wire up read command
-1 setup --title option for read command
-2 create readNote function in notes.js
-    -search for note by title
-    -find note and print title styled and body plain
-    -no note found? prin error in red
-3 have a command handler call the function
 
 */
