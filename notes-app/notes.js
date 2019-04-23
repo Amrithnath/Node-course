@@ -1,4 +1,5 @@
 const fs=require('fs')
+const chalk=require('chalk')
 const getNotes=function(){
     return "Your notes..."
 }
@@ -41,15 +42,16 @@ const removeNote=function(title){
     const notes=loadNotes();
     present=false
     const newNotes=notes.filter(function(Note){
-        if(Note.title===title){
-            present=true
-        }
         return Note.title!==title
     })
-    saveNotes(newNotes)
-    console.log("Removed "+title)
-    console.log(newNotes)
-    return present
+    if(newNotes.length<notes.length){
+        console.log(newNotes)
+        saveNotes(newNotes)
+        console.log(chalk.inverse.green("Note with title ")+chalk.white.inverse(" "+title+" ")+chalk.inverse.green(" was removed"))
+    }
+    else if(newNotes.length===notes.length){
+        console.log(chalk.inverse.red("No note with title: "+title))
+    }
 }
 module.exports = {
     getNotes:getNotes,
