@@ -45,3 +45,12 @@ module.exports = {
     addNote:addNote,
     removeNote:removeNote
 }
+
+/*
+Challenge
+
+-Set remove command to take a title as an argument
+-create and export remove note function in notes.js
+-call remove note in remove command handler
+-log to console the name of the note to be removed
+*/
