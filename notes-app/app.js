@@ -32,7 +32,7 @@ yargs.command({
             type:'string'
         }
     },
-    handler:function(argv){
+    handler(argv){
         notes.addNote(argv.title,argv.body)    
     }
 })
@@ -47,7 +47,7 @@ yargs.command({
             type:'string'
         }
     },
-    handler:function(argv){
+    handler(argv){
         notes.removeNote(argv.title)
     }
 })
@@ -55,7 +55,7 @@ yargs.command({
 yargs.command({
     command:'read',
     describe:'Reads a note',
-    handler:function () {
+    handler() {
         console.log(chalk.green("reading the note"))
     }
 })
@@ -63,7 +63,7 @@ yargs.command({
 yargs.command({
     command:'list',
     describe:'lists all notes',
-    handler: function(){
+    handler(){
         console.log(chalk.yellow("listing all notes"))
     }
 })
@@ -71,7 +71,6 @@ yargs.command({
 //add, remove,read, list
 yargs.parse()
 // console.log(chalk.green(JSON.stringify(yargs.argv)))
-x
 //Challenge : refactor all functions
 //if method ES6 
 //if not arrow function

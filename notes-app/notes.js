@@ -1,13 +1,8 @@
 const fs=require('fs')
-const chalk=require('chalk')
-const getNotes=function(){
-    return "Your notes..."
-}
-const addNote=function(title,body){
+const chalk=require('chalk') 
+function addNote(title,body){
     const notes = loadNotes();
-    const duplicateNotes=notes.filter(function(Note){
-        return Note.title===title
-    })
+    const duplicateNotes=notes.filter((Note)=>Note.title===title)
     if(duplicateNotes.length===0){
         notes.push({
             title:title,
@@ -23,27 +18,14 @@ const addNote=function(title,body){
     }
     
 }
-const loadNotes=function(){
-    try{    
-        const databuffer = fs.readFileSync('notes.json')
-        const dataJson = JSON.parse(databuffer.toString())
-        return dataJson
-    }
-    catch(e){
-        return []
-    }
-}
-const saveNotes=function(notes){
-    dataJSON=JSON.stringify(notes)
-    fs.writeFileSync('notes.json',dataJSON)
-}
+const loadNotes=()=>JSON.parse((fs.readFileSync('notes.json')).toString())
+
+const saveNotes=(notes)=>fs.writeFileSync('notes.json',JSON.stringify(notes))
 
 const removeNote=function(title){
     const notes=loadNotes();
     present=false
-    const newNotes=notes.filter(function(Note){
-        return Note.title!==title
-    })
+    const newNotes=notes.filter((Note)=>Note.title!==title)
     if(newNotes.length<notes.length){
         console.log(newNotes)
         saveNotes(newNotes)
@@ -54,7 +36,7 @@ const removeNote=function(title){
     }
 }
 module.exports = {
-    getNotes:getNotes,
+    getNotes:"Your notes...",
     addNote:addNote,
     removeNote:removeNote
 }
