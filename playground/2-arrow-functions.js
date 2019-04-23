@@ -15,7 +15,7 @@ const event={
     printGuestList(){
         console.log("Guest List for "+this.name)
         this.guestList.forEach((guest)=>{
-            console.log(guest + ' is attending '+ this.name)
+            console.log(guest + ' is attending '+ this.name)//Arrow functions do not bind their own this values, they bind to their parents this values
         })
     }
     
