@@ -43,9 +43,21 @@ const listNotes=()=>{
     console.log(chalk.blue.inverse("Your notes:\n"))
     notes.forEach(Note=>console.log(chalk.bold.yellow(Note.title))) 
 }
+const readNote=(title)=>{
+    const notes=loadNotes()
+    found=notes.find((Note)=>Note.title===title)
+    if(found){
+        console.log(chalk.green.inverse(title))
+        console.log(found.body)
+    }
+    else{
+        console.log(chalk.red.inverse("No such note"))
+    }
+}
 module.exports = {
     getNotes:getNotes,
     addNote:addNote,
     removeNote:removeNote,
-    listNotes:listNotes
+    listNotes:listNotes,
+    readNote:readNote
 }

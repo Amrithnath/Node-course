@@ -55,8 +55,15 @@ yargs.command({
 yargs.command({
     command:'read',
     describe:'Reads a note',
-    handler() {
-        console.log(chalk.green("reading the note"))
+    builder:{
+        title:{
+            describe:'reads a given note',
+            demandOption:true,
+            type:'string'
+        }
+    },
+    handler(argv) {
+        notes.readNote(argv.title)
     }
 })
 //create list command
