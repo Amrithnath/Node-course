@@ -74,9 +74,5 @@ yargs.parse()
 
 
 /*
-Goal : Wire up the list command
-1 create and export listNOtes form notes.js
-    -Your notes using chalk
-    -print title for each note
-2 call listNotes from yargs
+
 */
