@@ -71,7 +71,12 @@ yargs.command({
 //add, remove,read, list
 yargs.parse()
 // console.log(chalk.green(JSON.stringify(yargs.argv)))
-//Challenge : refactor all functions
-//if method ES6 
-//if not arrow function
-//most effecient passes challenge
+
+
+/*
+Goal : Wire up the list command
+1 create and export listNOtes form notes.js
+    -Your notes using chalk
+    -print title for each note
+2 call listNotes from yargs
+*/
