@@ -39,18 +39,12 @@ const saveNotes=function(notes){
 
 const removeNote=function(title){
     const notes=loadNotes();
-    newNote=[]
     const newNotes=notes.filter(function(Note){
-        if (Note.title===title){
-           x=5
-        }
-        else{
-            newNote.push(Note)
-        }
+       return Note.title!==title
     })
-    saveNotes(newNote)
+    saveNotes(newNotes)
     console.log("Removed "+title)
-    console.log(newNote)
+    console.log(newNotes)
 
 }
 module.exports = {
