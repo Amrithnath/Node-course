@@ -14,12 +14,12 @@ const addNote=function(title,body){
             body:body
         })
         saveNotes(notes)
-        console.log("new note added")
+        console.log(chalk.green.inverse("new note added"))
         console.log(notes)
     
     }
     else{
-        console.log("Note title taken")
+        console.log(chalk.red.inverse("Note title taken"))
     }
     
 }
@@ -58,8 +58,3 @@ module.exports = {
     addNote:addNote,
     removeNote:removeNote
 }
-/*
-Challenge:Chalk to provide useful logs to user
--If removed print green background note removed
--if no note removed print red background note not removed or found
-*/
