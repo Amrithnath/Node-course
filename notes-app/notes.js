@@ -36,8 +36,15 @@ const removeNote=(title)=>{
         console.log(chalk.inverse.red("No note with title: "+title))
     }
 }
+
+const listNotes=()=>{
+    const notes=loadNotes()
+    console.log(chalk.blue.inverse("Your notes:\n"))
+    notes.forEach(Note=>console.log("\n\n"+chalk.bold.yellow.inverse(Note.title)+"\n----"+chalk.dim.green(Note.body))) 
+}
 module.exports = {
     getNotes:getNotes,
     addNote:addNote,
-    removeNote:removeNote
+    removeNote:removeNote,
+    listNotes:listNotes
 }
