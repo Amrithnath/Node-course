@@ -71,4 +71,8 @@ yargs.command({
 //add, remove,read, list
 yargs.parse()
 // console.log(chalk.green(JSON.stringify(yargs.argv)))
-
+x
+//Challenge : refactor all functions
+//if method ES6 
+//if not arrow function
+//most effecient passes challenge
