@@ -49,7 +49,7 @@ const removeNote=function(title){
         }
     })
     saveNotes(newNote)
-    console.log("Removed"+title)
+    console.log("Removed "+title)
     console.log(newNote)
 
 }
