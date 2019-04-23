@@ -48,7 +48,13 @@ yargs.command({
         }
     },
     handler:function(argv){
-        notes.removeNote(argv.title)
+        present=notes.removeNote(argv.title)
+        if(present){
+            console.log(chalk.inverse.green("Note with title ")+chalk.white.inverse(" "+argv.title+" ")+chalk.inverse.green(" was removed"))
+        }
+        else{
+            console.log(chalk.inverse.red("No note with title: "+argv.title))
+        }
     }
 })
 //create read command

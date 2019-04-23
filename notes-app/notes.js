@@ -39,13 +39,17 @@ const saveNotes=function(notes){
 
 const removeNote=function(title){
     const notes=loadNotes();
+    present=false
     const newNotes=notes.filter(function(Note){
-       return Note.title!==title
+        if(Note.title===title){
+            present=true
+        }
+        return Note.title!==title
     })
     saveNotes(newNotes)
     console.log("Removed "+title)
     console.log(newNotes)
-
+    return present
 }
 module.exports = {
     getNotes:getNotes,
@@ -53,8 +57,7 @@ module.exports = {
     removeNote:removeNote
 }
 /*
-Challenge:wire up remove notes
--Load existing notes
--use array filter to filter out note with your title
--save the newly created array
+Challenge:Chalk to provide useful logs to user
+-If removed print green background note removed
+-if no note removed print red background note not removed or found
 */
