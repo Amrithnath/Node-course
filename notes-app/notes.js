@@ -4,7 +4,7 @@ const getNotes=()=>'Your notes'
 function addNote(title,body){
     const notes = loadNotes();
     //const duplicateNotes=notes.filter((Note)=>Note.title===title)
-    const duplicateNote=notes.find((Note)=>Note.title===title)
+    const duplicateNote=notes.find((Note)=> Note.title===title)
     if(!duplicateNote){
         notes.push({
             title:title,
