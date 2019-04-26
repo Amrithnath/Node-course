@@ -1,9 +1,15 @@
-console.log("starting")
+const request = require('request')
+const fs=require('fs')
+const dotenv = require('dotenv');
 
-setTimeout(()=>{
-    console.log("2 Second timer")
-},2000)
-setTimeout(()=>{
-    console.log("0 second timer")
-},0)
-console.log("Stopping")
+dotenv.config();
+
+API_key=process.env.key
+
+
+const URL="https://api.darksky.net/forecast/"+API_key+"/37.8267,-122.4233"
+
+request({url:URL},(error,response)=>{
+    console.log(response)
+}
+)
