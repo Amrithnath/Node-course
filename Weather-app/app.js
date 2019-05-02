@@ -15,8 +15,8 @@ request({url:MAPURL, json:true},(error,response)=>{
     if(error){
         console.log("404 Maps API is currently unavailable")
     }
-    else if(response.body.code==400){
-        console.log("400 Error "+response.body.error)
+    else if(!response.body.features){
+        console.log("Please give a valid location Error 400")
     }
     else{
         coord=[response.body.features[0].geometry.coordinates[1],response.body.features[0].geometry.coordinates[0]]
