@@ -6,19 +6,16 @@ app.get('',(req,res)=>{
     res.send('<h1>Hello Express!</h1>')
 })
 app.get('/help',(req,res)=>{
-    res.send([{
-        name:"Amrithnath",
-        age:25
-    },{
-        name:"Andrew",
-        age:27
-    }])
+    res.send('<h1>Help</h1>')
 })
 app.get('/about',(req,res)=>{
-    res.send("About page")
+    res.send("<h1>About page</h1>")
 })
 app.get('/weather',(req,res)=>{
-    res.send("Weather here")
+    res.send({
+        Forecast:"It is currently 30 degrees celsius with a 0% chance of rain",
+        location:"bangalore"
+    })
 })
 
 
@@ -26,11 +23,3 @@ app.get('/weather',(req,res)=>{
 app.listen(3000,()=>{
     console.log("Server is up on 3000")
 })
-/*
-Challenge 
-Goal : Update routes
-1.Setup route to render a title with HTML
-2.Setup a weather route to send back data
-    -Object with forecast and location strings
-3.Test your work
-*/
