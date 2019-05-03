@@ -2,11 +2,9 @@ const path=require('path')
 const express=require('express')
 
 const app=express()
+const publicpath=path.join(__dirname,'../Public')
+app.use(express.static(publicpath))
 
-app.use(express.static(path.join(__dirname,'../Public')))
-
-app.use(express.static(path.join(__dirname,'../Public')))
-app.use(express.static(path.join(__dirname,'../Public')))
 app.get('/weather',(req,res)=>{
     res.send({
         Forecast:"It is currently 30 degrees celsius with a 0% chance of rain",
