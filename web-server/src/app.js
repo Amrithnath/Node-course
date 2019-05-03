@@ -8,6 +8,7 @@ const app=express()
 const publicpath=path.join(__dirname,'../Public')
 const viewsPath=path.join(__dirname,'../templates/views')
 const partials=path.join(__dirname,'../templates/partials')
+const _404=path.join(__dirname,'../templates/views/404.hbs')
 
 //setup handlebar for viewsengine
 app.set('view engine','hbs')
@@ -38,21 +39,28 @@ app.get('/about',(req,res)=>{
     })
 })
 app.get('/weather',(req,res)=>{
-    res.send({
+    res.render({
         Forecast:"It is currently 30 degrees celsius with a 0% chance of rain",
         location:"bangalore"
+    })
+})
+
+app.get('/help/*',(req,res)=>{
+    res.render('404',{
+        title:"404 page",
+        error404:"404 help article not found",
+        name:"Amrithnath Vijayakumar"
+    })
+})
+
+app.get('*',(req,res)=>{
+    res.render('404',{
+        name:"Amrithnath Vijayakumar",
+        error404:"404 Page not found",
+        title:"404 Page"
     })
 })
 
 app.listen(3000,()=>{
     console.log("Server is up on 3000")
 })
-
-/*
-Challenge 
-Goal:Create partial for the footer
-
-1. Setup the template for the footer partial
-2. Render the partial at the footer of all three pages
-3. test the work by visiting all three pages
-*/
