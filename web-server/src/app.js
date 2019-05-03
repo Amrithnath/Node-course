@@ -47,3 +47,12 @@ app.get('/weather',(req,res)=>{
 app.listen(3000,()=>{
     console.log("Server is up on 3000")
 })
+
+/*
+Challenge 
+Goal:Create partial for the footer
+
+1. Setup the template for the footer partial
+2. Render the partial at the footer of all three pages
+3. test the work by visiting all three pages
+*/
