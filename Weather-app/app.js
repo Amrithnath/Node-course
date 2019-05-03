@@ -6,16 +6,17 @@ if(process.argv[2]){
 else{
     return console.log("Please enter a valid name for location")
 }
-geoCode(city,(error,data)=>{
+geoCode(city,(error,{latitude,longitude,location})=>{
     if(error){
         return console.log(error)
     }
-    forecast(data.latitude, data.longitude, (error, Fdata) => {
+    forecast({latitude,longitude}, (error, Fdata) => {
         if(error){
             return console.log(error)
         }
-        console.log(data.location)
-        console.log(Fdata.summary+" It is currently "+Fdata.temp+"degree celsius outside and there is a "+Fdata.rainP+"% chance of rain")
+        const {summary,temperature,rainP}=Fdata
+        console.log(location)
+        console.log(summary+" It is currently "+temperature+"degree celsius outside and there is a "+rainP+"% chance of rain")
     })
 })
 
