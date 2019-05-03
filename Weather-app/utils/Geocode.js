@@ -5,7 +5,6 @@ dotenv.config()
 
 Mapbox_API_key=process.env.Mapbox
 const geoCode=(address,callback)=>{
-    console.log(address)
     const url="https://api.mapbox.com/geocoding/v5/mapbox.places/"+encodeURIComponent(address)+".json?access_token="+Mapbox_API_key+"&limit=1"
 
     request({url:url,json:true},(error,response)=>{
