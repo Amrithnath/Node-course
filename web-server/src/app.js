@@ -1,15 +1,19 @@
 const path=require('path')
 const express=require('express')
+const hbs=require('hbs')
 
 const app=express()
 
 //define path for express config
 const publicpath=path.join(__dirname,'../Public')
-const viewsPath=path.join(__dirname,'../templates')
+const viewsPath=path.join(__dirname,'../templates/views')
+const partials=path.join(__dirname,'../templates/partials')
 
 //setup handlebar for viewsengine
 app.set('view engine','hbs')
 app.set('views',viewsPath)
+hbs.registerPartials(partials)
+
 //setup static directory serve
 app.use(express.static(publicpath))
 
@@ -43,11 +47,3 @@ app.get('/weather',(req,res)=>{
 app.listen(3000,()=>{
     console.log("Server is up on 3000")
 })
-/*
-Challenge
-Goal : Create a HBS template for help page
-
-1. Setup help template to render the help message to the screen
-2. Setup the help route and render the help template with an example message 
-3. visit and verify the routes
-*/
