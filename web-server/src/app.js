@@ -2,10 +2,16 @@ const path=require('path')
 const express=require('express')
 
 const app=express()
-const publicpath=path.join(__dirname,'../Public')
 
-app.use(express.static(publicpath))
+//define path for express config
+const publicpath=path.join(__dirname,'../Public')
+const viewsPath=path.join(__dirname,'../templates')
+
+//setup handlebar for viewsengine
 app.set('view engine','hbs')
+app.set('views',viewsPath)
+//setup static directory serve
+app.use(express.static(publicpath))
 
 app.get('',(req,res)=>{
     res.render('index',{
@@ -17,6 +23,7 @@ app.get('',(req,res)=>{
 app.get('/help',(req,res)=>{
     res.render('help',{
         title:"Help Section",
+        helptext:"This is very helpful",
         name:"Amrithnath Vijayakumar"
     })
 })
