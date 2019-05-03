@@ -9,7 +9,15 @@ app.set('view engine','hbs')
 
 app.get('',(req,res)=>{
     res.render('index',{
-        title:"Weather"
+        title:"Weather App",
+        name:"Amrithnath"
+    })
+})
+
+app.get('/about',(req,res)=>{
+    res.render('about',{
+        title:"About me",
+        name:"Amrithnath Vijayakumar"
     })
 })
 app.get('/weather',(req,res)=>{
@@ -22,3 +30,11 @@ app.get('/weather',(req,res)=>{
 app.listen(3000,()=>{
     console.log("Server is up on 3000")
 })
+/*
+Challenge
+Goal : Create a HBS template for help page
+
+1. Setup help template to render the help message to the screen
+2. Setup the help route and render the help template with an example message 
+3. visit and verify the routes
+*/
