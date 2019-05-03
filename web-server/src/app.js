@@ -26,3 +26,11 @@ app.get('/weather',(req,res)=>{
 app.listen(3000,()=>{
     console.log("Server is up on 3000")
 })
+/*
+Challenge 
+Goal : Update routes
+1.Setup route to render a title with HTML
+2.Setup a weather route to send back data
+    -Object with forecast and location strings
+3.Test your work
+*/
