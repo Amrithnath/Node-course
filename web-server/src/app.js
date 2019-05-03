@@ -3,10 +3,16 @@ const express=require('express')
 const app=express()
 
 app.get('',(req,res)=>{
-    res.send('Hello Express!')
+    res.send('<h1>Hello Express!</h1>')
 })
 app.get('/help',(req,res)=>{
-    res.send("Help Page")
+    res.send([{
+        name:"Amrithnath",
+        age:25
+    },{
+        name:"Andrew",
+        age:27
+    }])
 })
 app.get('/about',(req,res)=>{
     res.send("About page")
@@ -20,9 +26,3 @@ app.get('/weather',(req,res)=>{
 app.listen(3000,()=>{
     console.log("Server is up on 3000")
 })
-/*
-Challenge
-1. Setup an about page and add page title
-2.Setup a weather route and render page title
-3.test it
-*/
