@@ -8,6 +8,15 @@ app.get('',(req,res)=>{
 app.get('/help',(req,res)=>{
     res.send("Help Page")
 })
+app.get('/about',(req,res)=>{
+    res.send("About page")
+})
+app.get('/weather',(req,res)=>{
+    res.send("Weather here")
+})
+
+
+
 app.listen(3000,()=>{
     console.log("Server is up on 3000")
 })
