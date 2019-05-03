@@ -17,6 +17,14 @@ app.get('/weather',(req,res)=>{
         location:"bangalore"
     })
 })
+/*
+Challenge
+Goal:Create Two more HTML files
+1.Create a HTML page for about with about title
+2.Create HTML page for help with help title
+3.Remove old route handlers
+4.Visit both in the browser
+*/
 
 
 
