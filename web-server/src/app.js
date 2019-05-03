@@ -14,6 +14,12 @@ app.get('',(req,res)=>{
     })
 })
 
+app.get('/help',(req,res)=>{
+    res.render('help',{
+        title:"Help Section",
+        name:"Amrithnath Vijayakumar"
+    })
+})
 app.get('/about',(req,res)=>{
     res.render('about',{
         title:"About me",
