@@ -1,10 +1,10 @@
+const path=require('path')
 const express=require('express')
 
 const app=express()
 
-app.get('',(req,res)=>{
-    res.send('<h1>Hello Express!</h1>')
-})
+app.use(express.static(path.join(__dirname,'../Public')))
+
 app.get('/help',(req,res)=>{
     res.send('<h1>Help</h1>')
 })
