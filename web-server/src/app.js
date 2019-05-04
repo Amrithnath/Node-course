@@ -47,11 +47,11 @@ app.get('/weather',(req,res)=>{
     }
     geocode(req.query.address.toString(),(error,{latitude,longitude,location}={})=>{
         if(error){
-            return res.send(error)
+            return res.send({error})
         }
         forecast({latitude,longitude},(error,{summary,temperature,rainP})=>{
             if(error){
-                return res.send(error)
+                return res.send({error})
             }
             return res.send({'given':req.query.address,location,summary,forecast:`Its currently ${temperature} degrees celsius outside and there is a ${rainP}% chance of rain`})
         })  
