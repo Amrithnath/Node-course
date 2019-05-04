@@ -49,11 +49,11 @@ app.get('/weather',(req,res)=>{
         if(error){
             return res.send(error)
         }
-        forecast({latitude,longitude},(error,data={summary,temperature,rainP})=>{
+        forecast({latitude,longitude},(error,{summary,temperature,rainP})=>{
             if(error){
                 return res.send(error)
             }
-            return res.send(data)
+            return res.send({'given':req.query.address,location,summary,forecast:`Its currently ${temperature} degrees celsius outside and there is a ${rainP}% chance of rain`})
         })  
     })
 })
