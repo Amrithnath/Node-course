@@ -2,6 +2,9 @@ const path=require('path')
 const express=require('express')
 const hbs=require('hbs')
 
+const forecast=require('../utils/Weather')
+const geocode=require('../utils/Geocode')
+
 const app=express()
 
 //define path for express config
@@ -42,9 +45,16 @@ app.get('/weather',(req,res)=>{
     if(!req.query.address){
         return res.send("<header>Please input a valid address like so weather?address=Bangalore</header>")
     }
-    res.send({
-        Forecast:"It is currently 30 degrees celsius with a 0% chance of rain",
-        location:req.query.address
+    geocode(req.query.address.toString(),(error,{latitude,longitude,location})=>{
+        if(error){
+            return res.send(error)
+        }
+        forecast({latitude,longitude},(error,data={summary,temperature,rainP})=>{
+            if(error){
+                return res.send(error)
+            }
+            return res.send(data)
+        })  
     })
 })
 app.get('/help/*',(req,res)=>{
@@ -54,6 +64,17 @@ app.get('/help/*',(req,res)=>{
         name:"Amrithnath Vijayakumar"
     })
 })
+
+/*
+Challenge
+
+Goal:Wire up weather
+
+1. require geocode/forecast into app.js
+2. use the address to geocode
+3. use the coordinates to get the forecast
+4. send back the real forecast and location
+*/
 
 app.get('*',(req,res)=>{
     res.render('404',{
