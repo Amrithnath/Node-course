@@ -44,7 +44,16 @@ app.get('/weather',(req,res)=>{
         location:"bangalore"
     })
 })
+/*
+Challenge
 
+Goal:Update weather endpoint to accept addresses
+
+1. no address? send back an error message
+2. Address? Send back styatic json
+    -- add address property to json which returns the provided address
+3. test
+*/
 app.get('/help/*',(req,res)=>{
     res.render('404',{
         title:"404 page",
