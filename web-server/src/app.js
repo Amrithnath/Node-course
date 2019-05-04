@@ -45,7 +45,7 @@ app.get('/weather',(req,res)=>{
     if(!req.query.address){
         return res.send("<header>Please input a valid address like so weather?address=Bangalore</header>")
     }
-    geocode(req.query.address.toString(),(error,{latitude,longitude,location})=>{
+    geocode(req.query.address.toString(),(error,{latitude,longitude,location}={})=>{
         if(error){
             return res.send(error)
         }
