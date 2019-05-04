@@ -3,6 +3,7 @@ function send(location){
         response.json().then((data)=>{
             if(data.error){
                 error.textContent="Error: "+data.error
+                message.textContent=""
             }
             else{
                 error.textContent=data.location
@@ -24,7 +25,7 @@ weatherform.addEventListener('submit',(e)=>{
     if(search.value!=undefined){
         location = search.value
     }
-    error.textContent="Loading!"
-    message.textContent="Loading!"
+    error.textContent="Loading..."
+    message.textContent="Loading..."
     send(location)
 })
