@@ -11,7 +11,7 @@ const geoCode=(address,callback)=>{
         if(error){
             callback('Unable to connect to location server',undefined)
         }
-        else if(!body.features){
+        else if(body.features.length===0){
             callback('unable to find location, please try another query',undefined)
         }
         else{
