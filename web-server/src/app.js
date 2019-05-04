@@ -39,21 +39,14 @@ app.get('/about',(req,res)=>{
     })
 })
 app.get('/weather',(req,res)=>{
-    res.render({
+    if(!req.query.address){
+        return res.send("<header>Please input a valid address like so weather?address=Bangalore</header>")
+    }
+    res.send({
         Forecast:"It is currently 30 degrees celsius with a 0% chance of rain",
-        location:"bangalore"
+        location:req.query.address
     })
 })
-/*
-Challenge
-
-Goal:Update weather endpoint to accept addresses
-
-1. no address? send back an error message
-2. Address? Send back styatic json
-    -- add address property to json which returns the provided address
-3. test
-*/
 app.get('/help/*',(req,res)=>{
     res.render('404',{
         title:"404 page",
