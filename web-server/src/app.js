@@ -50,11 +50,11 @@ app.get('/weather',(req,res)=>{
         if(error){
             return res.send({error})
         }
-        forecast({latitude,longitude},(error,{summary,temperature,rainP})=>{
+        forecast({latitude,longitude},(error,{summary,temperature,rainP,uvindex,humidity,visibility,windSpeed})=>{
             if(error){
                 return res.send({error})
             }
-            return res.send({'given':req.query.address,location,summary,forecast:`Its currently ${temperature} degrees celsius outside and there is a ${rainP}% chance of rain`})
+            return res.send({'given':req.query.address,location,summary,forecast:`Its currently ${temperature} degrees celsius outside and there is a ${rainP}% chance of rain. With a wind speed of ${windSpeed} and humidity ${humidity}. The visibility is ${visibility} with a uvindex of ${uvindex}`})
         })  
     })
 })
