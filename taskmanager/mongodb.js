@@ -81,6 +81,14 @@ MongoClient.connect(connectionurl, {
     // }).catch((error)=>{
     //     console.log(error)
     // })
+
+    db.collection('tasks').deleteOne({
+        description:"make food"
+    }).then((result)=>{
+        console.log(result.deletedCount)
+    }).catch((error)=>{
+        console.log(error)
+    })
 })
 
 /*
@@ -88,7 +96,7 @@ MongoClient.connect(connectionurl, {
     Goal Use delete one to remove a task
 
     1. Grab the description of the task you want to delete
-    2. setup the call with a query to delete the task above
+    2. setup the call with a deleteone query to delete the task above
     3. use promises with success or error handlers
     4. test
 */
