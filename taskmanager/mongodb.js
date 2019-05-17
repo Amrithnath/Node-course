@@ -21,25 +21,46 @@ MongoClient.connect(connectionurl, {
 
     const db = client.db(databaseName)
 
-    //     db.collection('users').findOne({name:'Yvette'},(error,response)=>{
-    //         if(error) console.log("Couldnt find said user")
-    //         console.log(response)
-    //     })
-    //     db.collection('users').find({age:25}).toArray((error,users)=>{
-    //         if(error) console.log("Couldnt fin users matching criteria")
-    //         console.log(users)
-    //     })
-    //     db.collection('users').find({age:25}).count((error,count)=>{
-    //         if(error) console.log("Couldnt fin users matching criteria")
-    //         console.log(count)
-    //     })
-    // 
-    db.collection('tasks').findOne({_id:new ObjectID("5cdec618fb182e3c9c57f95b")},(error,task)=>{
-        if(error) console.log("please check your _id")
-        console.log(task)
-    })
-    db.collection('tasks').find({completed:false}).toArray((error,tasks)=>{
-        if(error) console.log("Hurray not Incomplete tasks")
-        console.log(tasks)
+    // db.collection('users').findOne({
+    //     name: 'Yvette'
+    // }, (error, response) => {
+    //     if (error) console.log("Couldnt find said user")
+    //     console.log(response)
+    // })
+    // db.collection('users').find({
+    //     age: 25
+    // }).toArray((error, users) => {
+    //     if (error) console.log("Couldnt fin users matching criteria")
+    //     console.log(users)
+    // })
+    // db.collection('users').find({
+    //     age: 25
+    // }).count((error, count) => {
+    //     if (error) console.log("Couldnt fin users matching criteria")
+    //     console.log(count)
+    // })
+
+    // db.collection('tasks').findOne({
+    //     _id: new ObjectID("5cdec618fb182e3c9c57f95b")
+    // }, (error, task) => {
+    //     if (error) console.log("please check your _id")
+    //     console.log(task)
+    // })
+    // db.collection('tasks').find({
+    //     completed: false
+    // }).toArray((error, tasks) => {
+    //     if (error) console.log("Hurray not Incomplete tasks")
+    //     console.log(tasks)
+    // })
+    db.collection('users').updateOne({
+        _id: new ObjectID("5cdec8b689aafe4e4491ed40")
+    }, {
+        $inc:{
+            age:1
+        }
+    }).then((result) => {
+        console.log(result)
+    }).catch((error) => {
+        console.log(error)
     })
 })
