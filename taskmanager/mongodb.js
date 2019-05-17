@@ -34,12 +34,12 @@ MongoClient.connect(connectionurl, {
     //         console.log(count)
     //     })
     // 
-    /* 
-        Challenge
-        Goal use find and find one with tasks collection
-
-        1. use findone to fetch last task by ID 
-        2.use find to fetch all tasks not complete
-        3. test
-    */
+    db.collection('tasks').findOne({_id:new ObjectID("5cdec618fb182e3c9c57f95b")},(error,task)=>{
+        if(error) console.log("please check your _id")
+        console.log(task)
+    })
+    db.collection('tasks').find({completed:false}).toArray((error,tasks)=>{
+        if(error) console.log("Hurray not Incomplete tasks")
+        console.log(tasks)
+    })
 })
