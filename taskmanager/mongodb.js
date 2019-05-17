@@ -52,15 +52,37 @@ MongoClient.connect(connectionurl, {
     //     if (error) console.log("Hurray not Incomplete tasks")
     //     console.log(tasks)
     // })
-    db.collection('users').updateOne({
-        _id: new ObjectID("5cdec8b689aafe4e4491ed40")
-    }, {
-        $inc:{
-            age:1
+    // db.collection('users').updateOne({
+    //     _id: new ObjectID("5cdec8b689aafe4e4491ed40")
+    // }, {
+    //     $inc:{
+    //         age:1
+    //     }
+    // }).then((result) => {
+    //     console.log(result)
+    // }).catch((error) => {
+    //     console.log(error)
+    // })
+    db.collection('tasks').updateMany({
+        completed:false
+    },{
+        $set:{
+            completed:true
         }
-    }).then((result) => {
+    }).then((result)=>{
         console.log(result)
-    }).catch((error) => {
+    }).catch((error)=>{
         console.log(error)
     })
 })
+
+/* 
+    Challenge 
+
+    Goal use update many to complete all tasks 
+
+    1. check docs for update many 
+    2. setup the call with the query and the update
+    3. use promises 
+    4. test
+*/
