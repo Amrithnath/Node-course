@@ -64,25 +64,14 @@ MongoClient.connect(connectionurl, {
     //     console.log(error)
     // })
     db.collection('tasks').updateMany({
-        completed:false
-    },{
-        $set:{
-            completed:true
+        completed: false
+    }, {
+        $set: {
+            completed: true
         }
-    }).then((result)=>{
-        console.log(result)
-    }).catch((error)=>{
+    }).then((result) => {
+        console.log(result.modifiedCount)
+    }).catch((error) => {
         console.log(error)
     })
 })
-
-/* 
-    Challenge 
-
-    Goal use update many to complete all tasks 
-
-    1. check docs for update many 
-    2. setup the call with the query and the update
-    3. use promises 
-    4. test
-*/
