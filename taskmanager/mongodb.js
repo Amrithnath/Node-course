@@ -74,11 +74,21 @@ MongoClient.connect(connectionurl, {
     // }).catch((error) => {
     //     console.log(error)
     // })
-    db.collection('users').deleteMany({
-        age:48
-    }).then((Response)=>{
-        console.log(Response.deletedCount)
-    }).catch((error)=>{
-        console.log(error)
-    })
+    // db.collection('users').deleteMany({
+    //     age:48
+    // }).then((Response)=>{
+    //     console.log(Response.deletedCount)
+    // }).catch((error)=>{
+    //     console.log(error)
+    // })
 })
+
+/*
+    challenge 
+    Goal Use delete one to remove a task
+
+    1. Grab the description of the task you want to delete
+    2. setup the call with a query to delete the task above
+    3. use promises with success or error handlers
+    4. test
+*/
