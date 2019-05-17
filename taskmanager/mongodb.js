@@ -1,8 +1,10 @@
 //CRUD operations
 
 
-const mongodb = require('mongodb')
-const MongoClient = mongodb.MongoClient
+// const mongodb = require('mongodb')
+//const MongoClient = mongodb.MongoClient
+// const ObjectID=
+const {MongoClient,ObjectID}=require('mongodb')
 
 const connectionurl = 'mongodb://127.0.0.1:27017'
 const databaseName = 'task-manager'
@@ -16,42 +18,8 @@ MongoClient.connect(connectionurl, {
 
     const db = client.db(databaseName)
 
-    //     db.collection('users').insertOne({
-    //         name:'amrithnath',
-    //         age:25
-    //     },(error,result)=>{
-    //         if (error) console.log("Unable to insert user")
-    //         console.log(result.ops)
-    //     })
-    //
-    // db.collection('users').insertMany([
-    //     {
-    //         name:"Yvette",
-    //         age:25
-    //     },
-    //     {
-    //         name:"Yvonne",
-    //         age:48
-    //     }
-    // ],(error,response)=>{
-    //     if(error) console.log("Unable to insert documents")
-    //     console.log(response.ops)
-    // })
-    db.collection('tasks').insertMany([
-        {
-            description:"Water plants",
-            completed: true
-        },
-        {
-            description:"Write code",
-            completed:false
-        },
-        {
-            description:"make food",
-            completed:true
-        }
-    ],(error,response)=>{
-        if(error) console.log("couldnt insert tasks")
-        console.log(response.ops)
+    db.collection('users').findOne({name:'Yvette'},(error,response)=>{
+        if(error) console.log("Couldnt find said user")
+        console.log(response)
     })
 })
