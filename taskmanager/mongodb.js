@@ -22,4 +22,12 @@ MongoClient.connect(connectionurl, {
         if(error) console.log("Couldnt find said user")
         console.log(response)
     })
+    db.collection('users').find({age:25}).toArray((error,users)=>{
+        if(error) console.log("Couldnt fin users matching criteria")
+        console.log(users)
+    })
+    db.collection('users').find({age:25}).count((error,count)=>{
+        if(error) console.log("Couldnt fin users matching criteria")
+        console.log(count)
+    })
 })
