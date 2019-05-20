@@ -1,6 +1,7 @@
 const express=require('express')
 require("./db/mongoose")
 const User= require('./models/user')
+const {ObjectID}  = require('mongodb')  
 const Task = require('./models/task')
 
 const app=express()
@@ -26,10 +27,10 @@ app.get('/tasks',(req,res)=>{
 
 app.get('/tasks/:id',(req,res)=>{
     const _id=req.params.id
-    Task.find({_id}).then((task)=>{
-        if(!task){
-            res.status(404).send()
-        }
+    if (!ObjectID.isValid(_id)) {         
+        return res.status(404).send();     
+    }
+    Task.findById(_id).then((task)=>{
         res.send(task)
     }).catch((e)=>{
         res.status(500).send()
@@ -46,10 +47,10 @@ app.get('/users',(req,res)=>{
 
 app.get('/users/:id',(req,res)=>{
     const _id=req.params.id
+    if (!ObjectID.isValid(_id)) {         
+        return res.status(404).send();     
+    }
     User.findById(_id).then((user)=>{
-        if(!user){
-            return res.status(404).send()
-        }
         res.send(user)
     }).catch((e)=>{
         res.status(500).send()
