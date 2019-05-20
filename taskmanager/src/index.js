@@ -46,3 +46,10 @@ app.post('/task',(req,res)=>{
 app.listen(port,()=>{
     console.log("listening on "+port)
 })
+/**
+ * Goal :Setup task reading endpoints
+ * 
+ * > Create endpoint for fetching all tasks
+ * > Create endpoint for fetching a task by its ID
+ * > Setup new requests in postman and test your work
+ */
