@@ -48,22 +48,27 @@ const User = mongoose.model('User', {
 
 const Task = mongoose.model('Tasks',{
     description:{
-        type:String
+        type:String,
+        required:true,
+        trim:true
     },
     completed:{
-        type:Boolean
+        type:Boolean,
+        required:false,
+        default:false
     }
 })
 
-// const task=new Task({
-//     description:"Water plants",
-//     completed:true
-// })
+const task=new Task({
+    description:"Read books",
+    completed:true
+})
 
-// task.save().then((result)=>{
-//     console.log(result)
-// }).catch((e)=>{
-//     console.log(e)
+task.save().then((result)=>{
+    console.log(result)
+}).catch((e)=>{
+    console.log(e)
+})
 
 // const me = new User({
 //     name:"Amrithnath   ",
@@ -77,10 +82,3 @@ const Task = mongoose.model('Tasks',{
 // }).catch((e) => {
 //     console.log(e)
 // })
-/**
- * Goal: add validation and sanitization to the tasks 
- * 
- * 1. trim and make the desctiption required
- * 2. make complete optional and default it to false
- * 3. test with and without errors
- */
