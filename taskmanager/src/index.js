@@ -17,3 +17,11 @@ app.post('/users',(req,res)=>{
 app.listen(port,()=>{
     console.log("listening on "+port)
 })
+/**
+ * Goal: Setup a task creation Endpoint
+ * 
+ * 
+ * >Create a seperate file for the task model
+ * >create the task creation endpoint
+ * >test the endpoint from postman
+ */
