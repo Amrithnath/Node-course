@@ -39,7 +39,7 @@ const User = mongoose.model('User', {
         trim:true,
         validate(value){
             console.log(value)
-            if(value.length<7 || value.includes('password')){
+            if(value.length<7 || value.toLowerCase().includes('password')){
                 throw new Error("password should be greater than 6 characters and should not be password")
             }
         }
@@ -65,15 +65,22 @@ const Task = mongoose.model('Tasks',{
 // }).catch((e)=>{
 //     console.log(e)
 
-const me = new User({
-    name:"Amrithnath   ",
-    email:"arjun.amrith@gmail.com  ",
-    age:25,
-    password:"amrithnath94"
-})
+// const me = new User({
+//     name:"Amrithnath   ",
+//     email:"arjun.amrith@gmail.com  ",
+//     age:25,
+//     password:"Password12"
+// })
 
-me.save().then((result) => {
-    console.log(result)
-}).catch((e) => {
-    console.log(e)
-})
+// me.save().then((result) => {
+//     console.log(result)
+// }).catch((e) => {
+//     console.log(e)
+// })
+/**
+ * Goal: add validation and sanitization to the tasks 
+ * 
+ * 1. trim and make the desctiption required
+ * 2. make complete optional and default it to false
+ * 3. test with and without errors
+ */
