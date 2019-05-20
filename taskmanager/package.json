@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start":"node src/index.js",
-    "dev":"nodemon src/index.js"
+    "dev":"nodemon src/index.js",
+    "db" : "mongod.exe --dbpath='E:/data/db/' --port=2717"
   },
   "keywords": [],
   "author": "",
