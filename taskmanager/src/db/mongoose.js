@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-mongoose.connect('mongodb://127.0.0.1:27017/task-manager-api', {
+mongoose.connect('mongodb://127.0.0.1:2717/task-manager-api', {
     useNewUrlParser: true,
     useCreateIndex: true
 })
@@ -15,14 +15,32 @@ const User = mongoose.model('User', {
     }
 })
 
-
-const me = new User({
-    name: "Amrithnath",
-    age: 25
+const Task = mongoose.model('Tasks',{
+    description:{
+        type:String
+    },
+    completed:{
+        type:Boolean
+    }
 })
 
-me.save().then((result) => {
+const task=new Task({
+    description:"Water plants",
+    completed:true
+})
+
+task.save().then((result)=>{
     console.log(result)
-}).catch((e) => {
+}).catch((e)=>{
     console.log(e)
 })
+// const me = new User({
+//     name: "Amrithnath",
+//     age: 25
+// })
+
+// me.save().then((result) => {
+//     console.log(result)
+// }).catch((e) => {
+//     console.log(e)
+// })
