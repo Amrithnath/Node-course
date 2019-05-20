@@ -32,6 +32,10 @@ const User = mongoose.model('User', {
                 throw new Error("Age must be a positive number")
             }
         }
+    },
+    password:{
+        type: String,
+        
     }
 })
 
@@ -65,3 +69,12 @@ me.save().then((result) => {
 }).catch((e) => {
     console.log(e)
 })
+/**
+ * Goal: Add password field to user
+ * 
+ * 1. Setup the field as a required string
+ * 2. Ensure length is greater than 6
+ * 3. Trim
+ * 4. ensure password dosent contain password
+ * 5. Test
+ */
