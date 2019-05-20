@@ -16,6 +16,26 @@ app.post('/users',(req,res)=>{
     })
 })
 
+app.get('/tasks',(req,res)=>{
+    Task.find({}).then((tasks)=>{
+        res.send(tasks)
+    }).catch((e)=>{
+        res.status(500).send()
+    })
+})
+
+app.get('/tasks/:id',(req,res)=>{
+    const _id=req.params.id
+    Task.find({_id}).then((task)=>{
+        if(!task){
+            res.status(404).send()
+        }
+        res.send(task)
+    }).catch((e)=>{
+        res.status(500).send()
+    })
+})
+
 app.get('/users',(req,res)=>{
     User.find({}).then((users)=>{
         res.send(users)
@@ -35,6 +55,7 @@ app.get('/users/:id',(req,res)=>{
         res.status(500).send()
     })
 })
+
 app.post('/task',(req,res)=>{
     const task=new Task(req.body)
     task.save().then(()=>{
@@ -43,13 +64,8 @@ app.post('/task',(req,res)=>{
         res.status(400).send(e)
     })
 })
+
+
 app.listen(port,()=>{
     console.log("listening on "+port)
 })
-/**
- * Goal :Setup task reading endpoints
- * 
- * > Create endpoint for fetching all tasks
- * > Create endpoint for fetching a task by its ID
- * > Setup new requests in postman and test your work
- */
