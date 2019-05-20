@@ -35,7 +35,14 @@ const User = mongoose.model('User', {
     },
     password:{
         type: String,
-        
+        required:true,
+        trim:true,
+        validate(value){
+            console.log(value)
+            if(value.length<7 || value.includes('password')){
+                throw new Error("password should be greater than 6 characters and should not be password")
+            }
+        }
     }
 })
 
@@ -59,9 +66,10 @@ const Task = mongoose.model('Tasks',{
 //     console.log(e)
 
 const me = new User({
-    name:"Amrithnath    ",
-    email:"Arjun.amrith@gmail.com  ",
-    age:25
+    name:"Amrithnath   ",
+    email:"arjun.amrith@gmail.com  ",
+    age:25,
+    password:"amrithnath94"
 })
 
 me.save().then((result) => {
@@ -69,12 +77,3 @@ me.save().then((result) => {
 }).catch((e) => {
     console.log(e)
 })
-/**
- * Goal: Add password field to user
- * 
- * 1. Setup the field as a required string
- * 2. Ensure length is greater than 6
- * 3. Trim
- * 4. ensure password dosent contain password
- * 5. Test
- */
