@@ -8,13 +8,14 @@ const app=express()
 const port = process.env.PORT || 5000
 app.use(express.json())
 
-app.post('/users',(req,res)=>{
+app.post('/users',async(req,res)=>{
     const user=new User(req.body)
-    user.save().then(()=>{
+    try{
+        await user.save()
         res.status(201).send(user)
-    }).catch((err)=>{
-        res.status(400).send(err)
-    })
+    }catch(e){
+        res.status(400).send()
+    }
 })
 
 app.get('/tasks',(req,res)=>{
@@ -37,24 +38,23 @@ app.get('/tasks/:id',(req,res)=>{
     })
 })
 
-app.get('/users',(req,res)=>{
-    User.find({}).then((users)=>{
+app.get('/users',async(req,res)=>{
+    try {
+        const users = await User.find({})
         res.send(users)
-    }).catch((e)=>{
+    } catch (error) {
         res.status(500).send()
-    })
+    }
 })
 
-app.get('/users/:id',(req,res)=>{
+app.get('/users/:id',async(req,res)=>{
     const _id=req.params.id
-    if (!ObjectID.isValid(_id)) {         
-        return res.status(404).send();     
-    }
-    User.findById(_id).then((user)=>{
+    try {
+        const user = await User.findById(_id)
         res.send(user)
-    }).catch((e)=>{
+    } catch (error) {
         res.status(500).send()
-    })
+    }
 })
 
 app.post('/task',(req,res)=>{
