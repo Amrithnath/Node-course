@@ -18,24 +18,28 @@ app.post('/users',async(req,res)=>{
     }
 })
 
-app.get('/tasks',(req,res)=>{
-    Task.find({}).then((tasks)=>{
+app.get('/tasks',async (req,res)=>{
+    try {
+        const tasks = await Task.find({})
         res.send(tasks)
-    }).catch((e)=>{
+    } catch (error) {
         res.status(500).send()
-    })
+    }
 })
 
-app.get('/tasks/:id',(req,res)=>{
+app.get('/tasks/:id', async(req,res)=>{
     const _id=req.params.id
+
     if (!ObjectID.isValid(_id)) {         
         return res.status(404).send();     
     }
-    Task.findById(_id).then((task)=>{
+    try {
+        
+        const task = await Task.findById(_id)
         res.send(task)
-    }).catch((e)=>{
+    } catch (error) {
         res.status(500).send()
-    })
+    }
 })
 
 app.get('/users',async(req,res)=>{
@@ -57,13 +61,15 @@ app.get('/users/:id',async(req,res)=>{
     }
 })
 
-app.post('/task',(req,res)=>{
+app.post('/task',async(req,res)=>{
     const task=new Task(req.body)
-    task.save().then(()=>{
+    try {    
+        const saved = await task.save()
         res.status(201).send(task)
-    }).catch((e)=>{
-        res.status(400).send(e)
-    })
+       
+    } catch (error) {
+        res.status(400).send(error)
+    }
 })
 
 
